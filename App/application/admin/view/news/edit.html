@@ -1,0 +1,97 @@
+<!--header-->
+{include file="public/_meta" /}
+<article class="page-container">
+  <form class="form form-horizontal" id="form-singwaapp" url="{:url('admin/news/add')}" name = "form-singwaapp">
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章标题：</label>
+      <div class="formControls col-xs-8 col-sm-9">
+        <input type="text" class="input-text" value="{$newInfo.title}" placeholder="" id="title" name="title">
+      </div>
+    </div>
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-2">简略标题：</label>
+      <div class="formControls col-xs-8 col-sm-9">
+        <input type="text" class="input-text" value="{$newInfo.small_title}" placeholder="" id="samll_title" name="small_title">
+      </div>
+    </div>
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>分类栏目：</label>
+      <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+
+				<select name="catid" class="select">
+
+                  {volist name="cat" id="vo"}
+                  <option value="{$key}" {if condition="!empty($newInfo.catid) &&$key == $newInfo.catid"}selected{/if}>--{$vo}--</option>
+                  {/volist}
+                </select>
+
+				</span> </div>
+    </div>
+
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-2">文章摘要：</label>
+      <div class="formControls col-xs-8 col-sm-9">
+        <textarea name="description" cols="" rows="" class="textarea"  placeholder="说点什么...最少输入10个字符" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" >{$newInfo.description}</textarea>
+        <p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>
+      </div>
+    </div>
+
+
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-2">允许评论：</label>
+      <div class="formControls col-xs-8 col-sm-9 skin-minimal">
+        <div class="check-box">
+          <input type="checkbox" id="is_allow_comments" name="is_allow_comments" value="" {if condition ="$newInfo.is_allow_comments == 1"}selected{/if}>
+          <label for="is_allow_comments">&nbsp;</label>
+        </div>
+      </div>
+    </div>
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-2">是否推荐到首页头图：</label>
+      <div class="formControls col-xs-8 col-sm-9 skin-minimal">
+        <div class="check-box">
+          <input type="checkbox" id="is_head_figure" name="is_head_figure" value="" {if condition ="$newInfo.is_head_figure == 1"}selected{/if}>
+          <label for="is_head_figure">&nbsp;</label>
+        </div>
+      </div>
+    </div>
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-2">是否推荐：</label>
+      <div class="formControls col-xs-8 col-sm-9 skin-minimal">
+        <div class="check-box">
+          <input type="checkbox" id="is_position" name="is_position" value="" {if condition ="$newInfo.is_position == 1"}selected{/if}>
+          <label for="is_position">&nbsp;</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-2">缩略图：</label>
+      <div class="formControls col-xs-8 col-sm-9">
+        <input id="image_upload"  type="file" multiple="true" >
+        <img style="display: none" id="upload_img" src="{$newInfo.image}" width="200" height="150" >
+        <input id="file_upload" name="image" type="hidden" multiple="true" value="{$newInfo.image}">
+      </div>
+    </div>
+
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-2">文章内容：</label>
+      <div class="formControls col-xs-8 col-sm-9">
+        <textarea name="content" id="editor" >{$newInfo.content}</textarea></div>
+    <div class="row cl">
+      <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2" style="'top': 200">
+        <button  class="btn btn-secondary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
+        <button onClick="removeIframe();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+      </div>
+    </div>
+  </form>
+</article>
+
+<!--插入尾部文件>-->
+{include file="public/_validate_footer" /}
+<!--插入尾部文件-->
+{include file="public/_footer" /}
+</body>
+{include file="public/_ckeditor_footer" /}
+{include file="public/_uploadifive_footer" /}
+</html>

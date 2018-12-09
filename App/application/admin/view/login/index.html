@@ -1,0 +1,65 @@
+<!--包含头部文件-->
+{include file='public/_meta'}
+<!--包含头部文件-->
+  <title>后台登录 - H-ui.admin v3.1</title>
+  <meta name="keywords" content="H-ui.admin v3.1,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
+  <meta name="description" content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
+</head>
+<body>
+<input type="hidden" id="TenantId" name="TenantId" value="" />
+<div class="header"></div>
+<div class="loginWraper">
+  <div id="loginform" class="loginBox">
+    <form class="form form-horizontal" action="{:url('login/loginCheck')}" method="post">
+      <div class="row cl">
+        <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60d;</i></label>
+        <div class="formControls col-xs-8">
+          <input name="username" type="text" placeholder="账户" class="input-text size-L username">
+          <label class = 'information username_information' >  &nbsp;    </label>
+        </div>
+      </div>
+      <div class="row cl">
+        <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60e;</i></label>
+        <div class="formControls col-xs-8">
+          <input  name="password" type="password" placeholder="密码" class="input-text size-L">
+          <label class = 'information password' >  &nbsp;   </label>
+        </div>
+      </div>
+      <div class="row cl">
+        <div class="formControls col-xs-8 col-xs-offset-3">
+          <input name="verifycode" class="input-text size-L" type="text" placeholder="验证码" style="width:150px;">
+          {:captcha_img()}<a id = 'captcha_change'>  看不清? 点击切换</a></div>
+      </div>
+      <div  class="row cl">
+        <div class="formControls col-xs-8 col-xs-offset-3"><label class = 'information ' > &nbsp;</label>
+        </div>
+      </div>
+      <div class="row cl">
+        <div class="formControls col-xs-8 col-xs-offset-3">
+          <input name="" type="submit" class="btn btn-success radius size-L" value="&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;">
+          <input name="" type="reset" class="btn btn-default radius size-L" value="&nbsp;取&nbsp;&nbsp;&nbsp;&nbsp;消&nbsp;">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="footer">Copyright xjyplayer by H-ui.admin v3.1</div>
+
+<!--包含尾部文件-->
+{include file='public/_footer'}
+
+<script>
+    $("#captcha_change").click(function(){
+        $("#captcha").click();
+    });
+
+    var SCOPE = {
+        'username_url' : '{:url("api/AdminUser/username")}',
+        'password_url' : '{:url("api/AdminUser/password")}',
+        'verifycode_url' : '{:url("api/AdminUser/verifycode")}'
+    }
+</script>
+
+<!--包含尾部文件-->
+</body>
+</html>
